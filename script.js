@@ -31,8 +31,9 @@ $(document).ready(function() {
 
         // loop over time blocks To check the time and add the classes for background indicators
         $(".time-block").each(function () {
-            var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+            var blockTime = parseInt($(this).attr("id").split("hour")[0]);
             console.log(blockTime)
+            console.log(timeNow)
 
              
             if (blockTime < timeNow) {
