@@ -32,37 +32,24 @@ $(document).ready(function() {
         // loop over time blocks To check the time and add the classes for background indicators
         $(".time-block").each(function () {
             var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+            console.log(blockTime)
 
              
             if (blockTime < timeNow) {
-                $(this).removeClass("future");
-                $(this).removeClass("present");
+                $(this).removeClass("future present");
                 $(this).addClass("past");
             }
             else if (blockTime === timeNow) {
-                $(this).removeClass("past");
-                $(this).removeClass("future");
+                $(this).removeClass("past future");
                 $(this).addClass("present");
             }
             else {
-                $(this).removeClass("present");
-                $(this).removeClass("past");
+                $(this).removeClass("present past");
                 $(this).addClass("future");
 
             }
         })
     }
-
-    // Get item from local storage if any
-    $("#8h .plan").val(localStorage.getItem("8h"));
-    $("#9h .plan").val(localStorage.getItem("9h"));
-    $("#10h .plan").val(localStorage.getItem("10h"));
-    $("#11h .plan").val(localStorage.getItem("11h"));
-    $("#12h .plan").val(localStorage.getItem("12h"));
-    $("#13h .plan").val(localStorage.getItem("13h"));
-    $("#14h .plan").val(localStorage.getItem("14h"));
-    $("#15h .plan").val(localStorage.getItem("15h"));
-    $("#16h .plan").val(localStorage.getItem("16h"));
     
 
     timeTracker();
