@@ -14,7 +14,7 @@
 
 
 // Display current date
-// $("#currentDay").html(moment().format('dddd, MMM do YYYY'));
+
 var todayDate = moment().format('dddd, MMM Do YYYY');
 $("#currentDay").text(todayDate);
 
@@ -22,20 +22,17 @@ $(document).ready(function() {
     $(".saveBtn").on("click", function() {
         var text = $(this).siblings(".plan").val();
         var time = $(this).parent().attr("id");
-        localStorage.setItem(time,text);
+        localStorage.setItem(time,text); // set value to local storage
 
     })
     function timeTracker() {
         
         var timeNow = moment().hour(); //get current number of hours.
 
-        // loop over time blocks To check the time and add the classes for background indicators
+        // loop over time blocks To compare the time and add the classes for background indicators
         $(".time-block").each(function () {
             var blockTime = parseInt($(this).attr("id").split("hour")[0]);
-            console.log(blockTime)
-            console.log(timeNow)
-
-             
+           
             if (blockTime < timeNow) {
                 $(this).removeClass("future present");
                 $(this).addClass("past");
@@ -52,6 +49,17 @@ $(document).ready(function() {
         })
     }
     
+    // get value from local storage and put back on page
+    $("#8h .plan").val(localStorage.getItem("8h"));
+    $("#9h .plan").val(localStorage.getItem("9h"));
+    $("#10h .plan").val(localStorage.getItem("10h"));
+    $("#11h .plan").val(localStorage.getItem("11h"));
+    $("#12h .plan").val(localStorage.getItem("12h"));
+    $("#13h .plan").val(localStorage.getItem("13h"));
+    $("#14h .plan").val(localStorage.getItem("14h"));
+    $("#15h .plan").val(localStorage.getItem("15h"));
+    $("#16h .plan").val(localStorage.getItem("16h"));
+    $("#17h .plan").val(localStorage.getItem("17h"));
 
     timeTracker();
 })
